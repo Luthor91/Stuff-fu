@@ -10,8 +10,8 @@ title: {
     en: 'Wakfu Team Builder'
 },
 website_construction: {
-    fr: '⚠️ Site en construction ⚠️',
-    en: '⚠️ Website in progress !⚠️'
+    fr: '⚠️ Site mis en pause, regardez plutôt la V2 ! www.wakdraft.ovh',
+    en: '⚠️ Website in ronpish state, look at dis : www.wakdraft.ovh !⚠️'
 },
 heading: {
     fr: 'Team Builder Wakfu',
@@ -559,4 +559,4 @@ function getCurrentLanguage() {
 }
 
 
-export { LANGUAGES, TRANSLATIONS, setCurrentLanguage, getCurrentLanguage };
+export { getCurrentLanguage, LANGUAGES, setCurrentLanguage, TRANSLATIONS };
