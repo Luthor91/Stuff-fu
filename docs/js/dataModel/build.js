@@ -29,6 +29,48 @@ const BUILD_DATA = {
         "keywords": ["Mid Cost"],
         "class": "Huppermage",
         "description": "Build axé sur le placement et le support d'équipe, avec une bonne capacité à twerker sur les alliés."
+    },
+    "Hupport 1": {
+        "image": "assets/builds/Hupport Placeur.png",
+        "url": "https://zenithwakfu.com/builder/g6wjy",
+        "keywords": ["Mid Cost"],
+        "class": "Huppermage",
+        "description": "Build axé sur le placement et le support d'équipe, avec une bonne capacité à twerker sur les alliés."
+    },
+    "Hupport 2": {
+        "image": "assets/builds/Hupport Placeur.png",
+        "url": "https://zenithwakfu.com/builder/g6wjy",
+        "keywords": ["Mid Cost"],
+        "class": "Huppermage",
+        "description": "Build axé sur le placement et le support d'équipe, avec une bonne capacité à twerker sur les alliés."
+    },
+    "Hupport 3": {
+        "image": "assets/builds/Hupport Placeur.png",
+        "url": "https://zenithwakfu.com/builder/g6wjy",
+        "keywords": ["Mid Cost"],
+        "class": "Huppermage",
+        "description": "Build axé sur le placement et le support d'équipe, avec une bonne capacité à twerker sur les alliés."
+    },
+    "Hupport 4": {
+        "image": "assets/builds/Hupport Placeur.png",
+        "url": "https://zenithwakfu.com/builder/g6wjy",
+        "keywords": ["Mid Cost"],
+        "class": "Huppermage",
+        "description": "Build axé sur le placement et le support d'équipe, avec une bonne capacité à twerker sur les alliés."
+    },
+    "Hupport 5": {
+        "image": "assets/builds/Hupport Placeur.png",
+        "url": "https://zenithwakfu.com/builder/g6wjy",
+        "keywords": ["Mid Cost"],
+        "class": "Huppermage",
+        "description": "Build axé sur le placement et le support d'équipe, avec une bonne capacité à twerker sur les alliés."
+    },
+    "Hupport 6": {
+        "image": "assets/builds/Hupport Placeur.png",
+        "url": "https://zenithwakfu.com/builder/g6wjy",
+        "keywords": ["Mid Cost"],
+        "class": "Huppermage",
+        "description": "Build axé sur le placement et le support d'équipe, avec une bonne capacité à twerker sur les alliés."
     }
 };
 
