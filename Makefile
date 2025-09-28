@@ -16,7 +16,9 @@ serve:
 	$(PYTHON) -m http.server $(PORT)
 
 deploy: 
-	@git add .
+	@git add docs/*
+	@git add Makefile
+	@git add README.md
 	@git commit -m "update"
 	@git push $(GIT_REPO)
 
