@@ -14,11 +14,11 @@ serve:
 
 deploy:
 	@echo "Fetching last changes from GitHub..."
-	@git pull --rebase --autostash $(REMOTE) $(BRANCH)
+	@git pull --rebase --autostash $(GIT_REPO) $(BRANCH)
 	@echo "Deploying to GitHub..."
 	@git add docs Makefile README.md
 	@git commit -m "update" || echo "Nothing to commit"
-	@git push $(REMOTE) $(BRANCH)
+	@git push $(GIT_REPO) HEAD:$(BRANCH)
 
 
 # Cible pour nettoyer les fichiers générés
