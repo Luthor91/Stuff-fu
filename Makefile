@@ -2,25 +2,23 @@ PYTHON := python3.11
 PORT := 8000
 
 GIT_REPO := https://github.com/Luthor91/Wakbuild.git
+BRANCH ?= main
+REMOTE ?= origin
 
-.PHONY: serve
+.PHONY: deploy
 
 # Commande pour démarrer
 serve:
 	@echo "Starting server on http://127.0.0.1:$(PORT)"
 	$(PYTHON) -m http.server $(PORT)
 
-deploy: 
+deploy:
 	@echo "Fetching last changes from GitHub..."
-	@git stash
-	@git pull --rebase
-	@git stash pop || true
+	@git pull --rebase --autostash $(REMOTE) $(BRANCH)
 	@echo "Deploying to GitHub..."
-	@git add docs/*
-	@git add Makefile
-	@git add README.md
-	@git commit -m "update"
-	@git push $(GIT_REPO)
+	@git add docs Makefile README.md
+	@git commit -m "update" || echo "Nothing to commit"
+	@git push $(REMOTE) $(BRANCH)
 
 
 # Cible pour nettoyer les fichiers générés
