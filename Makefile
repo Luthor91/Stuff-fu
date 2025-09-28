@@ -1,11 +1,6 @@
 PYTHON := python3.11
 PORT := 8000
 
-PATH_SRC := utils/src/js
-EXCEL_FILE := utils/data.xlsx
-PARSING_SCRIPT := "$(PATH_SRC)/parsing.js"
-OUTPUT_JSON := utils/class_data.json
-
 GIT_REPO := https://github.com/Luthor91/Wakbuild.git
 
 .PHONY: serve
