@@ -1,289 +1,47 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-translator="title">Wakfu Team Builder</title>
-    <link 
-        rel="shortcut icon" type="image/x-icon"
-        href="https://raw.githubusercontent.com/Luthor91/WakfuTeamBuilder/main/favicon.ico"
-    >
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <title>WakBuild – Liste des Builds</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-    <div id="construction-banner" data-translator="website-construction">
-        <div class="banner-content">
-            <span data-translator="website_construction" >⚠️ Site mis en pause, regardez plutôt la V2 ! www.wakdraft.ovh</span>
+  <div class="container">
+    <header>
+      <h1>WakBuild – Builds</h1>
+      <p>Recherche et filtres sur les builds. Tape un nom, choisis un niveau de coût et/ou une classe.</p>
+    </header>
+
+    <section class="filters" aria-label="Filtres des builds">
+      <div class="field">
+        <label class="label" for="search">Rechercher un build par nom</label>
+        <div class="search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          <input id="search" type="search" placeholder="ex. build_name_1" autocomplete="off" />
         </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="costFilter">Coût</label>
+        <select id="costFilter"></select>
+      </div>
+
+      <div class="field">
+        <label class="label" for="classFilter">Classe</label>
+        <select id="classFilter"></select>
+      </div>
+    </section>
+
+    <div class="results-info" aria-live="polite" aria-atomic="true">
+      <div><strong id="count">0</strong> build(s) trouvé(s)</div>
+      <div id="activeFilters" class="muted"></div>
     </div>
 
-    <h1 data-translator="heading">Wakfu Team Builder</h1>
-    
-    <h2 style="text-align:center; margin: 0;">
-    <span style="
-        display:inline-block;
-        color:#000;
-        background: rgba(180, 179, 179, 0.9);
-        padding:.5rem .8rem;
-        border-radius: .6rem;
-        box-shadow: 0 4px 12px rgba(0,0,0,.08);
-    ">
-        Hey&nbsp;! regardez la
-        <a href="https://www.wakdraft.ovh" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:underline;">
-        V2 du site
-        </a>
-        !
-    </span>
-    </h2>
+    <section id="cards" class="grid" aria-label="Résultats"></section>
+    <div id="empty" class="empty" hidden>Aucun build ne correspond aux critères. Essaie d’élargir les filtres.</div>
+  </div>
 
-
-    
-    <div id="language-switcher">
-        <img src="assets/elements/french_flag.png" alt="Français" class="language-flag" id="flag_french">
-        <img src="assets/elements/english_flag.png" alt="English" class="language-flag" id="flag_english">
-    </div>
-
-    <div id="favorite-team-handling">
-        <button id="save-team-button">
-            <img src="assets/icons/favorite-star.png" alt="Ajouter aux favoris" id="add-favorite-icon">
-        </button>
-        <button id="show-teams-button">
-            <img src="assets/icons/favorite-menu.png" alt="Lister les favoris" id="list-favorite-icon">
-        </button>
-    </div>   
-
-    <div id="saved-teams-menu" class="saved-teams-menu hidden"></div>
-    
-    <!--div id="social-network">
-        <a href="https://discord.gg/evVwcwE4uW">
-            <img src="assets/elements/discord.png" alt="Discord" class="discord-link">
-        </a>
-        <a href="mailto:luthorino91@gmail.com?subject=Suggestions regarding WakTeam Website">
-            <img src="assets/elements/mail.png" alt="Mail" class="mail-link">
-        </a>
-    </div-->   
-    
-    <div class="main-container">
-        <div class="panel" id="roles-panel">
-            <h3 data-translator="roles_choice">Roles choice</h3>
-            <div class="input-container">
-                <input type="text" id="role-input" placeholder="Enter team code..." data-translator="input_placeholder">
-
-            </div>
-            <div class="btn-container">
-                <button id="btn_export" class="btn" data-translator="export_button">Export</button>
-                <button id="btn_import" class="btn" data-translator="import_button">Import</button>
-            </div>
-            <div id="team-roles-panel">
-            </div>
-        </div>
-
-        <div class="panels-container">
-            
-
-            <div class="panel" id="team-top-panel">
-                <h3 data-translator="team_composition">Team composition</h3>
-                <div id="team-container">
-                    <div class="slot" data-slot="0"></div>
-                    <div class="slot" data-slot="1"></div>
-                    <div class="slot" data-slot="2"></div>
-                    <div class="slot" data-slot="3"></div>
-                    <div class="slot" data-slot="4"></div>
-                    <div class="slot" data-slot="5"></div>
-                </div>
-            </div>
-
-            <div class="panel" id="team-mid-panel">
-                <div id="gauges-container">
-                    <div class="main-gauge" id="main-gauge-DPT">
-                        <span data-translator="gauge_dpt">DPT</span>
-                        <div class="gauge-bar" id="gauge-DPT" data-value="0"></div>
-                    </div>
-                    <div id="sub-gauges-DPT" class="sub-gauges hidden">
-                        <div class="sub-gauge"><span data-translator="gauge_melee">Melee</span><div class="gauge-bar" id="gauge-Melee" data-value="0"></div></div>
-                        <div class="sub-gauge"><span data-translator="gauge_ranged">Ranged</span><div class="gauge-bar" id="gauge-Ranged" data-value="0"></div></div>
-                        <div class="sub-gauge"><span data-translator="gauge_area">Area</span><div class="gauge-bar" id="gauge-Area" data-value="0"></div></div>
-                        <div class="sub-gauge"><span data-translator="gauge_single_target">Single Target</span><div class="gauge-bar" id="gauge-Single_Target" data-value="0"></div></div>
-                        <div class="sub-gauge"><span data-translator="gauge_constant">Constant</span><div class="gauge-bar" id="gauge-Constant" data-value="0"></div></div>
-                        <div class="sub-gauge"><span data-translator="gauge_burst">Burst</span><div class="gauge-bar" id="gauge-Burst" data-value="0"></div></div>
-                    </div>
-                
-                    <div class="main-gauge" id="main-gauge-Support">
-                        <span>Support</span>
-                        <div class="gauge-bar" id="gauge-Support" data-value="0"></div>
-                    </div>
-                    <div id="sub-gauges-Support" class="sub-gauges hidden">
-                        <div class="sub-gauge"><span data-translator="gauge_heal">Heal</span><div class="gauge-bar" id="gauge-Heal" data-value="0"></div></div>
-                        <div class="sub-gauge"><span data-translator="gauge_shield">Shield</span><div class="gauge-bar" id="gauge-Shield" data-value="0"></div></div>
-                        <div class="sub-gauge"><span data-translator="gauge_positioning">Positioning</span><div class="gauge-bar" id="gauge-Positioning" data-value="0"></div></div>
-                        <div class="sub-gauge"><span data-translator="gauge_buff_mp">Buff MP</span><div class="gauge-bar" id="gauge-Buff_MP" data-value="0"></div></div>
-                        <div class="sub-gauge"><span data-translator="gauge_buff_ap">Buff AP</span><div class="gauge-bar" id="gauge-Buff_AP" data-value="0"></div></div>
-                        <div class="sub-gauge"><span data-translator="gauge_buff_di">Buff DI</span><div class="gauge-bar" id="gauge-Buff_DI" data-value="0"></div></div>
-                        <div class="sub-gauge"><span data-translator="gauge_protection">Protection</span><div class="gauge-bar" id="gauge-Protection" data-value="0"></div></div>
-                    </div>
-                
-                    <div class="main-gauge" id="main-gauge-Entrave">
-                        <span>Entrave</span>
-                        <div class="gauge-bar" id="gauge-Entrave" data-value="0"></div>
-                    </div>
-                    <div id="sub-gauges-Entrave" class="sub-gauges hidden">
-                        <div class="sub-gauge"><span data-translator="gauge_rall_mp">Rall MP</span><div class="gauge-bar" id="gauge-Rall_MP" data-value="0"></div></div>
-                        <div class="sub-gauge"><span data-translator="gauge_rall_ap">Rall AP</span><div class="gauge-bar" id="gauge-Rall_AP" data-value="0"></div></div>
-                        <div class="sub-gauge"><span data-translator="gauge_rall_di">Rall DI</span><div class="gauge-bar" id="gauge-Rall_DI" data-value="0"></div></div>
-                        <div class="sub-gauge"><span data-translator="gauge_rall_resistance">Rall Resistance</span><div class="gauge-bar" id="gauge-Rall_Resistance" data-value="0"></div></div>
-                        <div class="sub-gauge"><span data-translator="gauge_map_control">Map Control</span><div class="gauge-bar" id="gauge-Boringness" data-value="0"></div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="panel" id="team-bottom-panel">
-                <div class="legend">
-                    <div class="legend-card">
-                        <span class="legend-green"></span>
-                        <span data-translator="legend_green">Role filled by the team</span>
-                    </div>
-                    <div class="legend-card">
-                        <span class="legend-red"></span>
-                        <span data-translator="legend_red">Important role not taken by the team</span>
-                    </div>
-                    <div class="legend-card">
-                        <span class="legend-yellow"></span>
-                        <span data-translator="legend_yellow">Non-important role not taken by the team</span>
-                    </div>
-                </div>
-                
-
-                <div id="roles-under-gauge">
-                    <h3 data-translator="team_roles">Team roles</h3>
-                </div>
-            </div>
-        </div>
-
-        <div class="panel" id="roles-summary">
-            <h3 data-translator="summary_roles">Summary of roles</h3>
-            <div id="roles-summary-content-warns">
-            </div>
-            <div id="roles-summary-content-required">
-            </div>
-        </div>
-    </div>
-
-    <div id="selection-menu" class="hidden">
-        <div id="menu-content"></div>
-    
-        <!-- Footer avec les raccourcis et le bouton de fermeture -->
-        <div id="selection-menu-footer"> 
-            <div id="shortcuts-container">
-                <span class="shortcut">
-                    <img src="assets/icons/control-key.png" alt="CTRL" class="key-icon"> + 
-                    <img src="assets/icons/mouse-click.png" alt="Click" class="key-icon"> 
-                    <span data-translator="infos_class_selection_menu">Infos Classe</span>
-                </span>
-                <span class="shortcut">
-                    <img src="assets/icons/shift-key.png" alt="SHIFT" class="key-icon"> + 
-                    <img src="assets/icons/mouse-click.png" alt="Click" class="key-icon"> 
-                    <span data-translator="multi_select_selection_menu">Sélection multiple</span>
-                </span>
-            </div>
-    
-        </div>
-        <button id="close-menu-btn" data-translator="close_button">Close</button>
-
-    </div>
-    
-
-    <div id="class-info-display" style="display: none;">
-        <h2>Rôles de la classe</h2>
-        <div id="class-info-roles"></div>
-    </div>
-    
-    <script type="module" src="js/main.js"></script>
-
-    <script type="module" src="js/dataModel/global.js"></script>
-    <script type="module" src="js/dataModel/class.js"></script>
-    <script type="module" src="js/dataModel/role.js"></script>
-    <script type="module" src="js/dataModel/team.js"></script>   
-    <script type="module" src="js/dataModel/translation.js"></script>  
-
-    <script type="module" src="js/events/eventHandler.js"></script>   
-    <script type="module" src="js/events/eventClickHandler.js"></script>   
-    <script type="module" src="js/events/eventKeyboardHandler.js"></script>   
-
-    <script type="module" src="js/storage/localStorage.js"></script>   
-    <script type="module" src="js/transfert/importExport.js"></script>   
-
-    <script type="module" src="js/uiHandler/classInfos.js"></script>   
-    <script type="module" src="js/uiHandler/popup.js"></script>   
-    <script type="module" src="js/uiHandler/selectionMenu.js"></script>   
-    <script type="module" src="js/uiHandler/autoCompleteClassList.js"></script>   
-
-
-    <script type="module" src="js/update/gauge.js"></script>   
-    <script type="module" src="js/update/roleContainers.js"></script>   
-    <script type="module" src="js/update/teamContainer.js"></script>   
-    <script type="module" src="js/update/autoCompleteClassList.js"></script>   
-    <script type="module" src="js/update/update.js"></script>   
-
-    <div id="autocomplete-container">
-        <input type="text" id="autocomplete-input" placeholder="Tapez ici...">
-        <div id="autocomplete-list">
-            <div class="autocomplete-item" data-value="Feca">Feca</div>
-            <div class="autocomplete-item" data-value="Osamodas">Osamodas</div>
-            <div class="autocomplete-item" data-value="Enutrof">Enutrof</div>
-            <div class="autocomplete-item" data-value="Sram">Sram</div>
-            <div class="autocomplete-item" data-value="Xelor">Xelor</div>
-            <div class="autocomplete-item" data-value="Ecaflip">Ecaflip</div>
-            <div class="autocomplete-item" data-value="Eniripsa">Eniripsa</div>
-            <div class="autocomplete-item" data-value="Iop">Iop</div>
-            <div class="autocomplete-item" data-value="Cra">Cra</div>
-            <div class="autocomplete-item" data-value="Sadida">Sadida</div>
-            <div class="autocomplete-item" data-value="Sacrieur">Sacrieur</div>
-            <div class="autocomplete-item" data-value="Pandawa">Pandawa</div>
-            <div class="autocomplete-item" data-value="Roublard">Roublard</div>
-            <div class="autocomplete-item" data-value="Zobal">Zobal</div>
-            <div class="autocomplete-item" data-value="Ouginak">Ouginak</div>
-            <div class="autocomplete-item" data-value="Steamer">Steamer</div>
-            <div class="autocomplete-item" data-value="Eliotrope">Eliotrope</div>
-            <div class="autocomplete-item" data-value="Huppermage">Huppermage</div>
-        </div>
-        
-    </div>
-
+  <script type="module" src="js/main.js"></script>
 </body>
-
-<footer>
-    <div class="footer-container">
-        <div class="footer-section">
-            <h4 data-translator="about">À propos</h4>
-            <p data-translator="about_text">Wakfu Team Builder est un outil conçu pour optimiser vos équipes dans Wakfu.</p>
-        </div>
-
-        <div class="footer-section">
-            <h4 data-translator="contact">Contact</h4>
-            <p>
-                <a href="mailto:luthorino91@gmail.com?subject=Suggestions regarding WakTeam Website">
-                    <img src="assets/elements/mail.png" alt="Mail" class="footer-icon mail-link"> Email
-                </a>
-            </p>
-            <p>
-                <a href="https://discord.gg/evVwcwE4uW">
-                    <img src="assets/elements/discord.png" alt="Discord" class="footer-icon discord-link"> Discord
-                </a>
-            </p>
-        </div>
-
-        <div class="footer-section">
-            <h4 data-translator="credits">Crédits</h4>
-            <p data-translator="created_by">Créé par <strong>Luthorino</strong></p>
-        </div>
-    </div>
-
-    <p class="footer-bottom">&copy; 2025 Wakfu Team Builder. 
-        <span data-translator="rights_reserved">
-            Tous droits réservés.
-        </span>
-    </p>
-</footer>
-
-
 </html>

@@ -1,0 +1,35 @@
+const CLASS_LIST = {
+    "fr": [ 
+        "Feca", "Osamodas", "Enutrof", "Sram", 
+        "Xelor", "Ecaflip", "Eniripsa", "Iop", 
+        "Cra", "Sadida", "Sacrieur", "Pandawa", 
+        "Roublard", "Zobal", "Ouginak", "Steamer",
+        "Eliotrope", "Huppermage"
+    ], 
+    "en": [ 
+        "Feca", "Osamodas", "Enutrof", "Sram", 
+        "Xelor", "Ecaflip", "Eniripsa", "Iop", 
+        "Cra", "Sadida", "Sacrier", "Pandawa", 
+        "Rogue", "Masqueraider", "Ouginak", "Foggernaut",
+        "Eliotrope", "Huppermage"
+    ], 
+};
+
+const BUILD_DATA = {
+    "DPT Low Cost": {
+    "image": "assets/builds/DPT Low Cost.png",
+    "url": "https://zenithwakfu.com/builder/vvbog",
+    "keywords": ["Low Cost"],
+    "class": "Steamer",
+    "description": "Build orienté dégâts à distance, optimisé pour maximiser les coups critiques."
+    },
+    "Hupport Placeur": {
+        "image": "assets/builds/Hupport Placeur.png",
+        "url": "https://zenithwakfu.com/builder/g6wjy",
+        "keywords": ["Mid Cost"],
+        "class": "Huppermage",
+        "description": "Build axé sur le placement et le support d'équipe, avec une bonne capacité à twerker sur les alliés."
+    }
+};
+
+export { BUILD_DATA, CLASS_LIST };
