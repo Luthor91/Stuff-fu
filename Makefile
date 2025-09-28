@@ -11,6 +11,11 @@ serve:
 	$(PYTHON) -m http.server $(PORT)
 
 deploy: 
+	@echo "Fetching last changes from GitHub..."
+	@git stash
+	@git pull --rebase
+	@git stash pop || true
+	@echo "Deploying to GitHub..."
 	@git add docs/*
 	@git add Makefile
 	@git add README.md
