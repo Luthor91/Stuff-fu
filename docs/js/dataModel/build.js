@@ -80,6 +80,14 @@ const BUILD_DATA = {
     "class": "Feca",
     "description": "test"
   }
+,
+  "Iop Mid Cost": {
+    "image": "assets/builds/Iop Mid Cost.png",
+    "url": "https://zenithwakfu.com/builder/tp0dk",
+    "keywords": ["Mid Cost"],
+    "class": "Iop",
+    "description": "description"
+  }
 };
 
 export { BUILD_DATA, CLASS_LIST };
