@@ -72,6 +72,14 @@ const BUILD_DATA = {
         "class": "Huppermage",
         "description": "Build axé sur le placement et le support d'équipe, avec une bonne capacité à twerker sur les alliés."
     }
+,
+  "Cra Low Cost": {
+    "image": "assets/builds/Cra Low Cost.png",
+    "url": "https://zenithwakfu.com/builder/seeyu",
+    "keywords": ["Mid Cost"],
+    "class": "Feca",
+    "description": "test"
+  }
 };
 
 export { BUILD_DATA, CLASS_LIST };
