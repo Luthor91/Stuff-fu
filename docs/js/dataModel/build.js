@@ -96,6 +96,14 @@ const BUILD_DATA = {
     "class": "Feca",
     "description": "tst"
   }
+,
+  "Ecaflip Support [Soin]": {
+    "image": "assets/builds/Ecaflip Support [Soin].png",
+    "url": "https://zenithwakfu.com/builder/1tk28",
+    "keywords": ["Opti"],
+    "class": "Ecaflip",
+    "description": "Ecaflip Soin OPTIMISER lvl 245 (Passif Pucif)"
+  }
 };
 
 export { BUILD_DATA, CLASS_LIST };
