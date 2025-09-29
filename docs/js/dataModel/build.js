@@ -23,6 +23,14 @@ const BUILD_DATA = {
     "class": "Ecaflip",
     "description": "Ecaflip Soin OPTIMISER lvl 245 (Passif Pucif)"
   }
+,
+  "Enutrof SUPPORT": {
+    "image": "assets/builds/Enutrof SUPPORT.png",
+    "url": "https://zenithwakfu.com/builder/ctzuw",
+    "keywords": ["Opti"],
+    "class": "Enutrof",
+    "description": "Spé retrait Resistance/Retrait PM"
+  }
 };
 
 export { BUILD_DATA, CLASS_LIST };
